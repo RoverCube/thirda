@@ -27,10 +27,13 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
-"res://Match/": "red",
+"res://Match/": "gray",
 "res://Player/": "yellow",
 "res://Player/Characters/": "red",
+"res://Player/Damage/": "orange",
+"res://Player/States/": "purple",
 "res://Shaders/": "purple",
+"res://StateMachine/": "teal",
 "res://UI/": "green",
 "res://UI/HUD/": "green"
 }

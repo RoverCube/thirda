@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://dhuesupipw7l1"]
 
 [ext_resource type="Script" uid="uid://cnkbor8n8ivkr" path="res://Player/player_class.gd" id="1_atwy4"]
+[ext_resource type="Script" uid="uid://ce8io7gf61tx6" path="res://StateMachine/state_machine.gd" id="2_ur1xr"]
+[ext_resource type="Script" uid="uid://ee4o6hhd4p50" path="res://Player/States/1idle.gd" id="3_ura4x"]
+[ext_resource type="Script" uid="uid://betpih446nrbr" path="res://Player/States/2walk.gd" id="4_7y7dk"]
+[ext_resource type="Script" uid="uid://c1u3qctrek5sa" path="res://Player/States/3jump.gd" id="5_ti85i"]
+[ext_resource type="Script" uid="uid://cjl7l7brjrrd0" path="res://Player/States/4block.gd" id="6_2nr76"]
+[ext_resource type="Script" uid="uid://cf2abp5i3a5h4" path="res://Player/States/5attack.gd" id="7_lrh02"]
+[ext_resource type="Script" uid="uid://duomuoh4arrq5" path="res://Player/States/6grab.gd" id="8_akh4a"]
+[ext_resource type="Script" uid="uid://bbirdp7dam6ks" path="res://Player/States/7ultimate.gd" id="9_y4g4g"]
+[ext_resource type="Script" uid="uid://v74gkypf5kae" path="res://Player/States/8hurt.gd" id="10_vr2y4"]
+[ext_resource type="Script" uid="uid://ogr23ehb27lk" path="res://Player/States/9start.gd" id="11_1i8o3"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_ur1xr"]
 
@@ -14,6 +24,51 @@ length = 0.5
 collision_mask = 3
 script = ExtResource("1_atwy4")
 
+[node name="StateMachine" type="Node" parent="." unique_id=296058185 node_paths=PackedStringArray("buffer_timer", "all_states")]
+script = ExtResource("2_ur1xr")
+buffer_timer = NodePath("Timer")
+all_states = [NodePath("Idle"), NodePath("Walk"), NodePath("Jump"), NodePath("Block"), NodePath("Attack"), NodePath("Grab"), NodePath("Ultimate"), NodePath("Hurt"), NodePath("Start")]
+metadata/_custom_type_script = "uid://ce8io7gf61tx6"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=440086422 node_paths=PackedStringArray("player")]
+script = ExtResource("3_ura4x")
+player = NodePath("../..")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1581493454 node_paths=PackedStringArray("player")]
+script = ExtResource("4_7y7dk")
+player = NodePath("../..")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=832744933 node_paths=PackedStringArray("player")]
+script = ExtResource("5_ti85i")
+player = NodePath("../..")
+
+[node name="Block" type="Node" parent="StateMachine" unique_id=1750119663 node_paths=PackedStringArray("player")]
+script = ExtResource("6_2nr76")
+player = NodePath("../..")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1099605380 node_paths=PackedStringArray("player")]
+script = ExtResource("7_lrh02")
+player = NodePath("../..")
+
+[node name="Grab" type="Node" parent="StateMachine" unique_id=211227081 node_paths=PackedStringArray("player")]
+script = ExtResource("8_akh4a")
+player = NodePath("../..")
+
+[node name="Ultimate" type="Node" parent="StateMachine" unique_id=459102322 node_paths=PackedStringArray("player")]
+script = ExtResource("9_y4g4g")
+player = NodePath("../..")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=193778616 node_paths=PackedStringArray("player")]
+script = ExtResource("10_vr2y4")
+player = NodePath("../..")
+
+[node name="Start" type="Node" parent="StateMachine" unique_id=1730764564 node_paths=PackedStringArray("player")]
+script = ExtResource("11_1i8o3")
+player = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="StateMachine" unique_id=268890396]
+one_shot = true
+
 [node name="GroundCol" type="CollisionShape3D" parent="." unique_id=1173874947]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
 shape = SubResource("SeparationRayShape3D_ur1xr")
@@ -25,10 +80,6 @@ shape = SubResource("SeparationRayShape3D_atwy4")
 [node name="RightCol" type="CollisionShape3D" parent="." unique_id=607700693]
 transform = Transform3D(-4.371139e-08, 8.742278e-08, 1, 0, -1, 8.742278e-08, 1, 3.821371e-15, 4.371139e-08, 0, 1, 0)
 shape = SubResource("SeparationRayShape3D_ura4x")
-
-[node name="JumpBufferTimer" type="Timer" parent="." unique_id=354452558]
-wait_time = 0.2
-one_shot = true
 
 [node name="SuperTimer" type="Timer" parent="." unique_id=1293846569]
 wait_time = 4.0
