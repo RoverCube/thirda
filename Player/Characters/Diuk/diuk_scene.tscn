@@ -116,10 +116,9 @@ _data = {
 &"Uncrouch": SubResource("Animation_hkhjm")
 }
 
-[node name="Diuk" type="Node3D" unique_id=599605178 node_paths=PackedStringArray("animation_mesh", "animation_prop", "hurt_box")]
+[node name="Diuk" type="Node3D" unique_id=599605178 node_paths=PackedStringArray("animation", "hurt_box")]
 script = ExtResource("1_eh8xq")
-animation_mesh = NodePath("Diuk/AnimationPlayer")
-animation_prop = NodePath("AnimationProp")
+animation = NodePath("Diuk/AnimationPlayer")
 hurt_box = NodePath("HurtBox")
 metadata/_custom_type_script = "uid://c0h5qaa3lu3dm"
 
@@ -128,12 +127,12 @@ metadata/_custom_type_script = "uid://c0h5qaa3lu3dm"
 [node name="StandingCol" type="CollisionShape3D" parent="HurtBox" unique_id=1172420514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_wc30b")
+disabled = true
 debug_color = Color(0, 0.69, 0.18399999, 1)
 
 [node name="CrouchCol2" type="CollisionShape3D" parent="HurtBox" unique_id=441689017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, 0)
 shape = SubResource("CapsuleShape3D_b5i78")
-disabled = true
 debug_color = Color(0, 0.69, 0.18399999, 1)
 
 [node name="AnimationProp" type="AnimationPlayer" parent="." unique_id=988361525]

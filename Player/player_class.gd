@@ -15,9 +15,7 @@ var input_strong_kick  : bool  = false
 var input_grab         : bool  = false
 var input_ultimate     : float = 0.0
 
-#var gravity        : float = 20.0
-#var fall_bost      : float = 60.0
-#var jump_force     : float = 8.0
+
 
 var character    : Character
 
@@ -37,7 +35,10 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	input_axies = Input.get_axis(input_name("Left"),input_name("Right"))
 	input_crouch = Input.is_action_pressed(input_name("Down"))
-	
+	input_jump = Input.is_action_just_pressed(input_name("Up"))
+
+func _physics_process(_delta: float) -> void:
+	move_and_slide()
 
 func input_name(a: String) -> String:
 	return str(device,a)
