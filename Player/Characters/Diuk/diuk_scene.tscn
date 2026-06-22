@@ -12,116 +12,13 @@ height = 1.8
 radius = 0.4
 height = 1.05
 
-[sub_resource type="Animation" id="Animation_pd5dl"]
-resource_name = "Crouch"
-length = 0.25000837
-step = 0.08333334
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HurtBox/CrouchCol:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HurtBox/StandingCol:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(":can_attack")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_r8enm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(":can_attack")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_hkhjm"]
-resource_name = "Uncrouch"
-length = 0.25000837
-step = 0.08333334
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HurtBox/StandingCol:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HurtBox/CrouchCol:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(":can_attack")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8enm"]
-_data = {
-&"Crouch": SubResource("Animation_pd5dl"),
-&"RESET": SubResource("Animation_r8enm"),
-&"Uncrouch": SubResource("Animation_hkhjm")
-}
-
 [node name="Diuk" type="Node3D" unique_id=599605178 node_paths=PackedStringArray("animation", "standing_col", "crouch_col", "hurt_box")]
 script = ExtResource("1_eh8xq")
 animation = NodePath("Diuk/AnimationPlayer")
 standing_col = NodePath("HurtBox/StandingCol")
 crouch_col = NodePath("HurtBox/CrouchCol")
 hurt_box = NodePath("HurtBox")
+can_attack = false
 metadata/_custom_type_script = "uid://c0h5qaa3lu3dm"
 
 [node name="HurtBox" parent="." unique_id=474598688 instance=ExtResource("2_35cwq")]
@@ -137,16 +34,12 @@ shape = SubResource("CapsuleShape3D_b5i78")
 disabled = true
 debug_color = Color(0, 0.69, 0.18399999, 1)
 
-[node name="AnimationProp" type="AnimationPlayer" parent="." unique_id=988361525]
-libraries/ = SubResource("AnimationLibrary_r8enm")
-autoplay = &"RESET"
+[node name="Diuk" parent="." unique_id=1647951193 instance=ExtResource("3_sgxud")]
 
-[node name="Diuk" parent="." unique_id=1450119910 instance=ExtResource("3_sgxud")]
-
-[node name="Hat_2" parent="Diuk/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1450119910, 751052789) index="2" unique_id=1834998803]
+[node name="Hat_2" parent="Diuk/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1647951193, 1220898234) index="2" unique_id=1155438314]
 transform = Transform3D(0, 1, 1.3435884e-07, -1, 0, -4.0133938e-07, -4.0133938e-07, -1.343588e-07, 1, -0.1, 1.73, 0)
 
-[node name="AnimationPlayer" parent="Diuk" index="1" unique_id=1018546716]
+[node name="AnimationPlayer" parent="Diuk" index="1" unique_id=601833720]
 autoplay = &"Idle"
 
 [editable path="Diuk"]

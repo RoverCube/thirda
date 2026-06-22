@@ -16,14 +16,11 @@
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_ur1xr"]
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_atwy4"]
-length = 0.5
-
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_ura4x"]
-length = 0.5
+[sub_resource type="SphereShape3D" id="SphereShape3D_2nr76"]
+radius = 0.45
 
 [node name="PlayerScene" type="CharacterBody3D" unique_id=1695358219]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_atwy4")
 
 [node name="StateMachine" type="Node" parent="." unique_id=296058185 node_paths=PackedStringArray("buffer_timer", "all_states")]
@@ -84,11 +81,7 @@ shape = SubResource("SeparationRayShape3D_ur1xr")
 
 [node name="LeftCol" type="CollisionShape3D" parent="." unique_id=1129678351]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, 0)
-shape = SubResource("SeparationRayShape3D_atwy4")
-
-[node name="RightCol" type="CollisionShape3D" parent="." unique_id=607700693]
-transform = Transform3D(-4.371139e-08, 8.742278e-08, 1, 0, -1, 8.742278e-08, 1, 3.821371e-15, 4.371139e-08, 0, 1, 0)
-shape = SubResource("SeparationRayShape3D_ura4x")
+shape = SubResource("SphereShape3D_2nr76")
 
 [node name="SuperTimer" type="Timer" parent="." unique_id=1293846569]
 wait_time = 4.0
