@@ -9,6 +9,7 @@ extends CharacterBody3D
 var other_player           : Player
 var is_facing_negative     : bool
 var distance               : float
+var can_turn               : bool = true
 
 var input_axies        : float = 0.0
 var input_crouch       : bool  = false
@@ -54,6 +55,7 @@ func _physics_process(_delta: float) -> void:
 			turn(true)
 
 func turn(negative: bool) -> void:
+	if not can_turn: return
 	if negative:
 		rotation_degrees.y =  90
 		is_facing_negative = false

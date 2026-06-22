@@ -69,8 +69,9 @@ player = NodePath("../..")
 script = ExtResource("11_1i8o3")
 player = NodePath("../..")
 
-[node name="Slide" type="Node" parent="StateMachine" unique_id=1649956032]
+[node name="Slide" type="Node" parent="StateMachine" unique_id=1649956032 node_paths=PackedStringArray("player")]
 script = ExtResource("13_lrh02")
+player = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="StateMachine" unique_id=268890396]
 one_shot = true

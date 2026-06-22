@@ -13,11 +13,12 @@ func _check_change() -> void:
 	if is_zero_approx(player.input_axies):
 		change_state.emit("idle")
 	if player.input_crouch:
-		change_state.emit("crouch")
+		change_state.emit("slide")
 	if player.input_jump:
 		change_state.emit("jump")
 
 func turn_animations(blend: float = 0.1) -> void:
+	if not player.can_turn: return
 	if player.is_facing_negative:
 		if player.input_axies > 0:
 			player.character.play("WalkBack", blend)
