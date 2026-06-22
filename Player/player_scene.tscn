@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cnkbor8n8ivkr" path="res://Player/player_class.gd" id="1_atwy4"]
 [ext_resource type="Script" uid="uid://ce8io7gf61tx6" path="res://StateMachine/state_machine.gd" id="2_ur1xr"]
-[ext_resource type="Script" uid="uid://ee4o6hhd4p50" path="res://Player/States/1idle.gd" id="3_ura4x"]
-[ext_resource type="Script" uid="uid://betpih446nrbr" path="res://Player/States/2walk.gd" id="4_7y7dk"]
+[ext_resource type="Script" uid="uid://ee4o6hhd4p50" path="res://Player/States/0idle.gd" id="3_ura4x"]
+[ext_resource type="Script" uid="uid://betpih446nrbr" path="res://Player/States/1walk.gd" id="4_7y7dk"]
+[ext_resource type="Script" uid="uid://c0t2xi5ej5c2n" path="res://Player/States/2crouch.gd" id="5_2nr76"]
 [ext_resource type="Script" uid="uid://c1u3qctrek5sa" path="res://Player/States/3jump.gd" id="5_ti85i"]
 [ext_resource type="Script" uid="uid://cjl7l7brjrrd0" path="res://Player/States/4block.gd" id="6_2nr76"]
 [ext_resource type="Script" uid="uid://cf2abp5i3a5h4" path="res://Player/States/5attack.gd" id="7_lrh02"]
@@ -27,7 +28,7 @@ script = ExtResource("1_atwy4")
 [node name="StateMachine" type="Node" parent="." unique_id=296058185 node_paths=PackedStringArray("buffer_timer", "all_states")]
 script = ExtResource("2_ur1xr")
 buffer_timer = NodePath("Timer")
-all_states = [NodePath("Idle"), NodePath("Walk"), NodePath("Jump"), NodePath("Block"), NodePath("Attack"), NodePath("Grab"), NodePath("Ultimate"), NodePath("Hurt"), NodePath("Start")]
+all_states = [NodePath("Idle"), NodePath("Walk"), NodePath("Crouch"), NodePath("Jump"), NodePath("Block"), NodePath("Attack"), NodePath("Grab"), NodePath("Ultimate"), NodePath("Hurt"), NodePath("Start")]
 metadata/_custom_type_script = "uid://ce8io7gf61tx6"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=440086422 node_paths=PackedStringArray("player")]
@@ -37,6 +38,9 @@ player = NodePath("../..")
 [node name="Walk" type="Node" parent="StateMachine" unique_id=1581493454 node_paths=PackedStringArray("player")]
 script = ExtResource("4_7y7dk")
 player = NodePath("../..")
+
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=391169844]
+script = ExtResource("5_2nr76")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=832744933 node_paths=PackedStringArray("player")]
 script = ExtResource("5_ti85i")
