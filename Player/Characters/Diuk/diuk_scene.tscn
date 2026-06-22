@@ -139,12 +139,12 @@ debug_color = Color(0, 0.69, 0.18399999, 1)
 libraries/ = SubResource("AnimationLibrary_r8enm")
 autoplay = &"RESET"
 
-[node name="Diuk" parent="." unique_id=2024392694 instance=ExtResource("3_sgxud")]
+[node name="Diuk" parent="." unique_id=962931608 instance=ExtResource("3_sgxud")]
 
-[node name="Hat_2" parent="Diuk/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2024392694, 741620821) index="2" unique_id=1814751587]
+[node name="Hat_2" parent="Diuk/Armature/Skeleton3D" parent_id_path=PackedInt32Array(962931608, 352320005) index="2" unique_id=205686896]
 transform = Transform3D(0, 1, 1.3435884e-07, -1, 0, -4.0133938e-07, -4.0133938e-07, -1.343588e-07, 1, -0.1, 1.73, 0)
 
-[node name="AnimationPlayer" parent="Diuk" index="1" unique_id=2040890543]
+[node name="AnimationPlayer" parent="Diuk" index="1" unique_id=1430768022]
 autoplay = &"Idle"
 
 [editable path="Diuk"]
