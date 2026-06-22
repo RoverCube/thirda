@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bbirdp7dam6ks" path="res://Player/States/7ultimate.gd" id="9_y4g4g"]
 [ext_resource type="Script" uid="uid://v74gkypf5kae" path="res://Player/States/8hurt.gd" id="10_vr2y4"]
 [ext_resource type="Script" uid="uid://ogr23ehb27lk" path="res://Player/States/9start.gd" id="11_1i8o3"]
+[ext_resource type="Script" uid="uid://b37m3ctwebjji" path="res://Player/States/10slide.gd" id="13_lrh02"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_ur1xr"]
 
@@ -28,7 +29,7 @@ script = ExtResource("1_atwy4")
 [node name="StateMachine" type="Node" parent="." unique_id=296058185 node_paths=PackedStringArray("buffer_timer", "all_states")]
 script = ExtResource("2_ur1xr")
 buffer_timer = NodePath("Timer")
-all_states = [NodePath("Idle"), NodePath("Walk"), NodePath("Crouch"), NodePath("Jump"), NodePath("Block"), NodePath("Attack"), NodePath("Grab"), NodePath("Ultimate"), NodePath("Hurt"), NodePath("Start")]
+all_states = [NodePath("Idle"), NodePath("Walk"), NodePath("Crouch"), NodePath("Jump"), NodePath("Block"), NodePath("Attack"), NodePath("Grab"), NodePath("Ultimate"), NodePath("Hurt"), NodePath("Start"), NodePath("Slide")]
 metadata/_custom_type_script = "uid://ce8io7gf61tx6"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=440086422 node_paths=PackedStringArray("player")]
@@ -70,6 +71,9 @@ player = NodePath("../..")
 [node name="Start" type="Node" parent="StateMachine" unique_id=1730764564 node_paths=PackedStringArray("player")]
 script = ExtResource("11_1i8o3")
 player = NodePath("../..")
+
+[node name="Slide" type="Node" parent="StateMachine" unique_id=1649956032]
+script = ExtResource("13_lrh02")
 
 [node name="Timer" type="Timer" parent="StateMachine" unique_id=268890396]
 one_shot = true

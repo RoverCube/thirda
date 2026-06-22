@@ -23,14 +23,18 @@ func aaaaaaa(char1: Character, char2: Character) -> void:
 	p2.character = char2
 	p1.device = 1
 	p2.device = 2
+	p1.other_player = p2
+	p2.other_player = p1
+	p1.is_facing_negative = false
+	p2.is_facing_negative = true
 	
 	match_scene.add_child(p1)
 	match_scene.add_child(p2)
 	
 	p1.position.x = -3
 	p2.position.x =  3
-	p1.character.rotation_degrees.y =  90
-	p2.character.rotation_degrees.y = -90
+	p1.rotation_degrees.y =  90
+	p2.rotation_degrees.y = -90
 	
 	match_scene.camera.player_1 = p1
 	match_scene.camera.player_2 = p2

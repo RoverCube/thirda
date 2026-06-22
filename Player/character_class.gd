@@ -2,10 +2,12 @@
 class_name Character
 extends Node3D
 
-@export var max_health : int = 150
-@export var animation  : AnimationPlayer
-@export var hurt_box   : HurtBox
-@export var can_attack : bool = true
+@export var max_health   : int = 150
+@export var animation    : AnimationPlayer
+@export var standing_col : CollisionShape3D
+@export var crouch_col   : CollisionShape3D
+@export var hurt_box     : HurtBox
+@export var can_attack   : bool = true
 
 @abstract
 func light_punch() -> void

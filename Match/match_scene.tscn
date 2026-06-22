@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bkq5m0i4meo3e" path="res://UI/HUD/bars_label.gd" id="6_yc3oe"]
 [ext_resource type="Texture2D" uid="uid://bdjpdiccswqrd" path="res://UI/HUD/under_super.png" id="7_j8dmf"]
 [ext_resource type="Texture2D" uid="uid://b1sgahpscqgkf" path="res://UI/HUD/fill_super.png" id="8_lugax"]
+[ext_resource type="PackedScene" uid="uid://dj1tchfdud71b" path="res://Player/Characters/Esquilo/Model/Esquilo.blend" id="11_vd8a6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd8a6"]
 albedo_texture = ExtResource("2_houiq")
@@ -259,3 +260,6 @@ autowrap_trim_flags = 0
 justification_flags = 0
 
 [node name="Timer" type="Timer" parent="HUD/Timer/Time" unique_id=1818761784]
+
+[node name="Esquilo" parent="." unique_id=1767583591 instance=ExtResource("11_vd8a6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.269454, 5.215407e-08, -1.0296321)

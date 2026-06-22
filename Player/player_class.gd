@@ -4,6 +4,12 @@ extends CharacterBody3D
 @onready var main  : Main = $"../.."
 @export var device : int = 1
 
+
+@onready var state_machine : StateMachine = $StateMachine
+var other_player           : Player
+var is_facing_negative     : bool
+var distance               : float
+
 var input_axies        : float = 0.0
 var input_crouch       : bool  = false
 var input_jump         : bool  = false
@@ -14,8 +20,6 @@ var input_light_kick   : bool  = false
 var input_strong_kick  : bool  = false
 var input_grab         : bool  = false
 var input_ultimate     : float = 0.0
-
-
 
 var character    : Character
 
@@ -39,6 +43,23 @@ func _input(_event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
+	
+	distance = position.x - other_player.position.x
+	
+	if distance > 0: # negativo
+		if not is_facing_negative: # virado pro positivo
+			turn(false)
+	else: # positivo
+		if is_facing_negative: # virado pro negativo
+			turn(true)
+
+func turn(negative: bool) -> void:
+	if negative:
+		rotation_degrees.y =  90
+		is_facing_negative = false
+	else:
+		rotation_degrees.y = -90
+		is_facing_negative = true
 
 func input_name(a: String) -> String:
 	return str(device,a)
