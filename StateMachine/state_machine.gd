@@ -8,8 +8,6 @@ var current_state          : State
 var buffered_state         : State
 
 func _ready() -> void:
-	if not is_multiplayer_authority(): return
-
 	buffer_timer.timeout.connect(_on_buffer_timer_timeout)
 
 	for x in all_states:
@@ -19,12 +17,11 @@ func _ready() -> void:
 	current_state._on_start_state()
 
 func change_state(new_state_name: String) -> void:
-	if not is_multiplayer_authority(): return
-
 	for x in all_states:
 		if x.name.to_lower() == new_state_name.to_lower(): 
 			current_state._on_end_state() # ends current
 			x._on_start_state() # starts new
+			print(current_state.name," to ",x.name)
 			current_state = x # set as current
 
 			# buffer
@@ -41,8 +38,6 @@ func _on_buffer_timer_timeout() -> void:
 	buffered_state = null
 
 func _physics_process(delta: float) -> void:
-	if not is_multiplayer_authority(): return
-
 	if current_state.can_buffer_to.has(buffered_state):
 		buffered_state._generic_buffer(current_state)
 	current_state._check_change() # checks if it needs to change

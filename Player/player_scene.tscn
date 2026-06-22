@@ -39,8 +39,9 @@ player = NodePath("../..")
 script = ExtResource("4_7y7dk")
 player = NodePath("../..")
 
-[node name="Crouch" type="Node" parent="StateMachine" unique_id=391169844]
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=391169844 node_paths=PackedStringArray("player")]
 script = ExtResource("5_2nr76")
+player = NodePath("../..")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=832744933 node_paths=PackedStringArray("player")]
 script = ExtResource("5_ti85i")

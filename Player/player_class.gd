@@ -1,7 +1,6 @@
 class_name Player
 extends CharacterBody3D
 
-@onready var buffer_timer: Timer = $JumpBufferTimer
 @onready var main  : Main = $"../.."
 @export var device : int = 1
 
@@ -15,9 +14,7 @@ var input_light_kick   : bool  = false
 var input_strong_kick  : bool  = false
 var input_grab         : bool  = false
 var input_ultimate     : float = 0.0
-#var max_speed      : float = 5
-#var aceleration    : float = 8
-#var deceleration   : float = 12
+
 #var gravity        : float = 20.0
 #var fall_bost      : float = 60.0
 #var jump_force     : float = 8.0
@@ -39,7 +36,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	input_axies = Input.get_axis(input_name("Left"),input_name("Right"))
-	input_crouch = Input.is_action_just_pressed(input_name("Crouch"))
+	input_crouch = Input.is_action_just_pressed(input_name("Down"))
 	
 
 func input_name(a: String) -> String:
