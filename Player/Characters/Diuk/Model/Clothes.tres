@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cxwkxmpruvylg"]
+
+[ext_resource type="Shader" uid="uid://bmde7qv1w5r3r" path="res://Shaders/toonshader.gdshader" id="1_jgud4"]
+[ext_resource type="Texture2D" uid="uid://477tlluwmgd2" path="res://Player/Characters/Diuk/Model/Clothes.png" id="2_41jqe"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jgud4")
+shader_parameter/albedo = ExtResource("2_41jqe")
+shader_parameter/shadow_threshold = 0.3

@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://cyq7434vr86m1"]
+
+[ext_resource type="Script" uid="uid://c0h5qaa3lu3dm" path="res://Player/Characters/test_character.gd" id="1_1adkl"]
+[ext_resource type="PackedScene" uid="uid://bmdfvoridavm" path="res://Player/Damage/hurt_box_base.tscn" id="2_ahhp1"]
+[ext_resource type="PackedScene" uid="uid://dj1tchfdud71b" path="res://Player/Characters/Esquilo/Model/Esquilo.blend" id="3_w8tn5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wc30b"]
+radius = 0.4
+height = 1.5235351
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b5i78"]
+radius = 0.4
+height = 1.05
+
+[sub_resource type="Animation" id="Animation_pd5dl"]
+resource_name = "Crouch"
+length = 0.25000837
+step = 0.08333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HurtBox/CrouchCol2:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HurtBox/StandingCol:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:can_attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_r8enm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:can_attack")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hkhjm"]
+resource_name = "Uncrouch"
+length = 0.25000837
+step = 0.08333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HurtBox/StandingCol:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HurtBox/CrouchCol2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:can_attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8enm"]
+_data = {
+&"Crouch": SubResource("Animation_pd5dl"),
+&"RESET": SubResource("Animation_r8enm"),
+&"Uncrouch": SubResource("Animation_hkhjm")
+}
+
+[sub_resource type="Animation" id="Animation_b5i78"]
+resource_name = "Crouch"
+length = 0.25000837
+step = 0.08333334
+
+[sub_resource type="Animation" id="Animation_4e4wu"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_523jo"]
+resource_name = "Uncrouch"
+length = 0.25000837
+step = 0.08333334
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4e4wu"]
+_data = {
+&"Crouch": SubResource("Animation_b5i78"),
+&"RESET": SubResource("Animation_4e4wu"),
+&"Uncrouch": SubResource("Animation_523jo")
+}
+
+[node name="TestCharacter" type="Node3D" unique_id=599605178 node_paths=PackedStringArray("animation_mesh", "animation_prop", "hurt_box")]
+script = ExtResource("1_1adkl")
+animation_mesh = NodePath("AnimationMesh")
+animation_prop = NodePath("AnimationProp")
+hurt_box = NodePath("HurtBox")
+metadata/_custom_type_script = "uid://c0h5qaa3lu3dm"
+
+[node name="HurtBox" parent="." unique_id=474598688 instance=ExtResource("2_ahhp1")]
+
+[node name="StandingCol" type="CollisionShape3D" parent="HurtBox" unique_id=1172420514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76176757, 0)
+shape = SubResource("CapsuleShape3D_wc30b")
+debug_color = Color(0, 0.69, 0.18399999, 1)
+
+[node name="CrouchCol2" type="CollisionShape3D" parent="HurtBox" unique_id=441689017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, 0)
+shape = SubResource("CapsuleShape3D_b5i78")
+disabled = true
+debug_color = Color(0, 0.69, 0.18399999, 1)
+
+[node name="AnimationProp" type="AnimationPlayer" parent="." unique_id=988361525]
+root_node = NodePath("../AnimationMesh")
+libraries/ = SubResource("AnimationLibrary_r8enm")
+
+[node name="AnimationMesh" type="AnimationPlayer" parent="." unique_id=1183008983]
+libraries/ = SubResource("AnimationLibrary_4e4wu")
+autoplay = &"RESET"
+
+[node name="Esquilo" parent="." unique_id=1767583591 instance=ExtResource("3_w8tn5")]
+
+[editable path="Esquilo"]

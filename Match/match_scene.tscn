@@ -1,0 +1,261 @@
+[gd_scene format=3 uid="uid://bstbhtghwtxj8"]
+
+[ext_resource type="Script" uid="uid://bdw54ti2gc3a3" path="res://Match/match_class.gd" id="1_yc3oe"]
+[ext_resource type="Script" uid="uid://sfxda2iw0au4" path="res://Player/camera_class.gd" id="2_gfjx2"]
+[ext_resource type="Texture2D" uid="uid://cyvwub0mr7xgl" path="res://Player/Characters/Esquilo/Model/Clothes.png" id="2_houiq"]
+[ext_resource type="Texture2D" uid="uid://bj1e7nxxgdfc0" path="res://UI/HUD/time_under.png" id="3_houiq"]
+[ext_resource type="Texture2D" uid="uid://bpv8uyqjhuph4" path="res://UI/HUD/under_hp.png" id="4_vd8a6"]
+[ext_resource type="Texture2D" uid="uid://dc5dc6d00an4y" path="res://UI/HUD/fill_hp.png" id="5_m8o6h"]
+[ext_resource type="FontFile" uid="uid://cvbrsmj7hkq1o" path="res://UI/ThirdNumbs.otf" id="6_d2q4x"]
+[ext_resource type="Script" uid="uid://bkq5m0i4meo3e" path="res://UI/HUD/bars_label.gd" id="6_yc3oe"]
+[ext_resource type="Texture2D" uid="uid://bdjpdiccswqrd" path="res://UI/HUD/under_super.png" id="7_j8dmf"]
+[ext_resource type="Texture2D" uid="uid://b1sgahpscqgkf" path="res://UI/HUD/fill_super.png" id="8_lugax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd8a6"]
+albedo_texture = ExtResource("2_houiq")
+uv1_triplanar = true
+
+[sub_resource type="Environment" id="Environment_m8o6h"]
+ambient_light_source = 2
+ambient_light_color = Color(0.46, 0.2622, 0.2622, 1)
+ambient_light_energy = 2.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gyfs4"]
+
+[node name="Match" type="Node" unique_id=136812198 node_paths=PackedStringArray("camera")]
+script = ExtResource("1_yc3oe")
+camera = NodePath("Camera")
+metadata/_custom_type_script = "uid://bdw54ti2gc3a3"
+
+[node name="Map" type="CSGBox3D" parent="." unique_id=1849812518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+flip_faces = true
+size = Vector3(50, 5, 20)
+material = SubResource("StandardMaterial3D_vd8a6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map" unique_id=1457500872]
+environment = SubResource("Environment_m8o6h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map" unique_id=1754677815]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, -2.5, 0)
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1890847643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+current = true
+script = ExtResource("2_gfjx2")
+
+[node name="WallLeft" type="StaticBody3D" parent="Camera" unique_id=1710238520]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -6, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/WallLeft" unique_id=2032806022]
+shape = SubResource("WorldBoundaryShape3D_gyfs4")
+debug_color = Color(0.94509804, 0, 0.5921569, 1)
+
+[node name="WallRight" type="StaticBody3D" parent="Camera" unique_id=684392701]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 6, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/WallRight" unique_id=1106343704]
+shape = SubResource("WorldBoundaryShape3D_gyfs4")
+debug_color = Color(0.94509804, 0, 0.5921569, 1)
+
+[node name="HUD" type="Control" parent="." unique_id=340287069]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="TextureRect" parent="HUD" unique_id=1524512579]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 35.0
+offset_right = 139.0
+offset_bottom = 252.0
+grow_horizontal = 2
+texture = ExtResource("3_houiq")
+
+[node name="Health1" type="TextureProgressBar" parent="HUD/Timer" unique_id=356633470]
+layout_mode = 1
+offset_left = -750.0
+offset_right = 45.0
+offset_bottom = 203.0
+value = 100.0
+texture_under = ExtResource("4_vd8a6")
+texture_progress = ExtResource("5_m8o6h")
+
+[node name="H1Label" type="Label" parent="HUD/Timer/Health1" unique_id=803202493]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -101.5
+offset_right = 170.0
+offset_bottom = 121.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+theme_override_colors/font_shadow_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -15
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_d2q4x")
+theme_override_font_sizes/font_size = 125
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_trim_flags = 0
+justification_flags = 0
+script = ExtResource("6_yc3oe")
+
+[node name="Super1" type="TextureProgressBar" parent="HUD/Timer" unique_id=2031649261]
+layout_mode = 1
+offset_left = -678.0
+offset_top = 143.0
+offset_right = 117.0
+offset_bottom = 346.0
+max_value = 4.0
+value = 4.0
+texture_under = ExtResource("7_j8dmf")
+texture_progress = ExtResource("8_lugax")
+
+[node name="S1Label" type="Label" parent="HUD/Timer/Super1" unique_id=284639694]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -113.0
+offset_right = 115.0
+offset_bottom = 17.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+theme_override_colors/font_shadow_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -15
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_d2q4x")
+theme_override_font_sizes/font_size = 125
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_trim_flags = 0
+justification_flags = 0
+script = ExtResource("6_yc3oe")
+
+[node name="Health2" type="TextureProgressBar" parent="HUD/Timer" unique_id=1296729685]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 750.0
+offset_right = 1545.0
+offset_bottom = 203.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+texture_under = ExtResource("4_vd8a6")
+texture_progress = ExtResource("5_m8o6h")
+
+[node name="H2Label" type="Label" parent="HUD/Timer/Health2" unique_id=192891751]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 170.0
+offset_top = -101.5
+offset_right = 370.0
+offset_bottom = 121.5
+grow_vertical = 2
+scale = Vector2(-1, 1)
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+theme_override_colors/font_shadow_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 15
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_d2q4x")
+theme_override_font_sizes/font_size = 125
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_trim_flags = 0
+justification_flags = 0
+script = ExtResource("6_yc3oe")
+
+[node name="Super2" type="TextureProgressBar" parent="HUD/Timer" unique_id=1926705972]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 678.0
+offset_top = 143.0
+offset_right = 1439.0
+offset_bottom = 285.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+max_value = 4.0
+value = 4.0
+texture_under = ExtResource("7_j8dmf")
+texture_progress = ExtResource("8_lugax")
+
+[node name="S2Label" type="Label" parent="HUD/Timer/Super2" unique_id=1543931748]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 115.0
+offset_top = -52.0
+offset_right = 185.0
+offset_bottom = 78.0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+theme_override_colors/font_shadow_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -15
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_d2q4x")
+theme_override_font_sizes/font_size = 125
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_trim_flags = 0
+justification_flags = 0
+script = ExtResource("6_yc3oe")
+
+[node name="Time" type="Label" parent="HUD/Timer" unique_id=1209456402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+theme_override_colors/font_shadow_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 20
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("6_d2q4x")
+theme_override_font_sizes/font_size = 200
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_trim_flags = 0
+justification_flags = 0
+
+[node name="Timer" type="Timer" parent="HUD/Timer/Time" unique_id=1818761784]

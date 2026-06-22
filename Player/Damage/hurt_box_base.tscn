@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bmdfvoridavm"]
+
+[ext_resource type="Script" uid="uid://od3x340gg155" path="res://Player/Damage/hurt_box_class.gd" id="1_74ptx"]
+
+[node name="HurtBox" type="Area3D" unique_id=474598688]
+collision_layer = 8
+collision_mask = 4
+input_ray_pickable = false
+monitorable = false
+script = ExtResource("1_74ptx")
+metadata/_custom_type_script = "uid://od3x340gg155"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

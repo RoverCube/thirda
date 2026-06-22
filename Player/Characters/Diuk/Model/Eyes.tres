@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cl1wajer86wax"]
+
+[ext_resource type="Shader" uid="uid://bq0w4rtqxkwxr" path="res://Shaders/toonshader_color.gdshader" id="1_1fjjt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1fjjt")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/shadow_threshold = 0.3
