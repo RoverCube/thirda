@@ -1,13 +1,25 @@
 extends PlayerState
 
-func _on_start_state() -> void: player.character.play("Crouch")
+var can_switch : bool = false
+
+func _on_start_state() -> void: 
+	can_switch = false
+	player.character.play("Crouch")
+	await player.character.animation_mesh.animation_finished
+	can_switch = true
+	player.character.play("CrouchIdle")
+
+
 func _on_end_state() -> void:   player.character.play("Uncrouch")
 
 func _check_change() -> void:
-	if player.character.animation_mesh.is_playing(): return
+	if not can_switch: return
+	
+	# attack
+	
 	if player.input_crouch == false:
 		
-		
-		
+		if not is_zero_approx(player.input_axies):
+			change_state.emit("walk")
 		
 		change_state.emit("idle")

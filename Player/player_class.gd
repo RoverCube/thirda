@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	input_axies = Input.get_axis(input_name("Left"),input_name("Right"))
-	input_crouch = Input.is_action_just_pressed(input_name("Down"))
+	input_crouch = Input.is_action_pressed(input_name("Down"))
 	
 
 func input_name(a: String) -> String:

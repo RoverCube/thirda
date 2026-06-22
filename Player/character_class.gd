@@ -33,6 +33,6 @@ func super_light_kick() -> void
 @abstract
 func super_heavy_kick() -> void
 
-func play(animation_name: String) -> void:
-	if animation_mesh.has_animation(animation_name): animation_mesh.play(animation_name)
+func play(animation_name: String, blend: float = -1) -> void:
+	if animation_mesh.has_animation(animation_name): animation_mesh.play(animation_name, blend)
 	if animation_prop.has_animation(animation_name): animation_prop.play(animation_name)
