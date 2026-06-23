@@ -41,11 +41,24 @@ func _input(_event: InputEvent) -> void:
 	input_axies = Input.get_axis(input_name("Left"),input_name("Right"))
 	input_crouch = Input.is_action_pressed(input_name("Down"))
 	input_jump = Input.is_action_just_pressed(input_name("Up"))
+	
+	input_light_punch = Input.is_action_just_pressed(input_name("LightPunch"))
+	input_strong_punch = Input.is_action_just_pressed(input_name("StrongPunch"))
+	input_light_kick = Input.is_action_just_pressed(input_name("LightKick"))
+	input_strong_kick = Input.is_action_just_pressed(input_name("StrongKick"))
 
-func _physics_process(_delta: float) -> void:
+
+func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	distance = position.x - other_player.position.x
+	
+	if Input.is_action_pressed(input_name("Super")):
+		input_ultimate += delta
+	elif Input.is_action_just_released(input_name("Super")):
+		if input_ultimate < 0.2: activate_super()
+		input_ultimate = 0.0
+	
 	
 	if distance > 0: # negativo
 		if not is_facing_negative: # virado pro positivo
@@ -53,7 +66,6 @@ func _physics_process(_delta: float) -> void:
 	else: # positivo
 		if is_facing_negative: # virado pro negativo
 			turn(true)
-
 func turn(negative: bool) -> void:
 	if not can_turn: return
 	if negative:
@@ -74,3 +86,6 @@ func _on_get_hurt(hit: HitBox):
 	
 	health_bar.value = health
 func _on_super_timer_timeout() -> void: super_active = false
+func activate_super() -> void:
+	super_active = true
+	super_timer.start()
