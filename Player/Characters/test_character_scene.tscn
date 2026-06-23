@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1v1r2bgp3rva"]
 
-[ext_resource type="Script" uid="uid://c0h5qaa3lu3dm" path="res://Player/Characters/test_character.gd" id="1_wc30b"]
+[ext_resource type="Script" uid="uid://c5tlcnsnvasou" path="res://Player/character_class.gd" id="1_wc30b"]
 [ext_resource type="PackedScene" uid="uid://bmdfvoridavm" path="res://Player/Damage/hurt_box_base.tscn" id="2_b5i78"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wc30b"]
@@ -211,12 +211,9 @@ _data = {
 &"Uncrouch": SubResource("Animation_523jo")
 }
 
-[node name="TestCharacter" type="Node3D" unique_id=599605178 node_paths=PackedStringArray("animation_mesh", "animation_prop", "hurt_box")]
+[node name="TestCharacter" type="Node3D" unique_id=599605178 node_paths=PackedStringArray("hurt_box")]
 script = ExtResource("1_wc30b")
-animation_mesh = NodePath("AnimationMesh")
-animation_prop = NodePath("AnimationProp")
 hurt_box = NodePath("HurtBox")
-metadata/_custom_type_script = "uid://c0h5qaa3lu3dm"
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=266887929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

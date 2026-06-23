@@ -16,6 +16,8 @@ func _check_change() -> void:
 		change_state.emit("slide")
 	if player.input_jump:
 		change_state.emit("jump")
+	generic_to(5) # Attack
+
 
 func turn_animations(blend: float = 0.1) -> void:
 	if not player.can_turn: return

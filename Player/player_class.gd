@@ -16,9 +16,9 @@ var input_crouch       : bool  = false
 var input_jump         : bool  = false
 var input_block        : bool  = false
 var input_light_punch  : bool  = false
-var input_strong_punch : bool  = false
+var input_heavy_punch : bool  = false
 var input_light_kick   : bool  = false
-var input_strong_kick  : bool  = false
+var input_heavy_kick  : bool  = false
 var input_grab         : bool  = false
 var input_ultimate     : float = 0.0
 
@@ -43,9 +43,9 @@ func _input(_event: InputEvent) -> void:
 	input_jump = Input.is_action_just_pressed(input_name("Up"))
 	
 	input_light_punch = Input.is_action_just_pressed(input_name("LightPunch"))
-	input_strong_punch = Input.is_action_just_pressed(input_name("StrongPunch"))
+	input_heavy_punch = Input.is_action_just_pressed(input_name("HeavyPunch"))
 	input_light_kick = Input.is_action_just_pressed(input_name("LightKick"))
-	input_strong_kick = Input.is_action_just_pressed(input_name("StrongKick"))
+	input_heavy_kick = Input.is_action_just_pressed(input_name("HeavyKick"))
 
 
 func _physics_process(delta: float) -> void:
